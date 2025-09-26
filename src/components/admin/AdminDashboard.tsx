@@ -107,10 +107,10 @@ export const AdminDashboard: React.FC = () => {
                 >
                   <div>
                     <p className={`font-medium ${currentTheme.colors.text}`}>
-                      {order.customerName}
+                      {order.customerData.name}
                     </p>
                     <p className={`text-sm ${currentTheme.colors.textSecondary}`}>
-                      {order.customerPhone}
+                      {order.customerData.phone}
                     </p>
                   </div>
                   <div className="text-right">

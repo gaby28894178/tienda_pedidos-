@@ -92,8 +92,8 @@ export const ProductManager: React.FC = () => {
       description: formData.description,
       price: formData.price,
       category: formData.category,
-      image: formData.image || 'https://via.placeholder.com/300x200?text=Sin+Imagen',
-      whatsappMessage: formData.whatsappMessage
+      image_url: formData.image || 'https://via.placeholder.com/300x200?text=Sin+Imagen',
+      available: true
     };
 
     if (editingProduct) {
@@ -273,7 +273,7 @@ export const ProductManager: React.FC = () => {
                   className={`border rounded-lg overflow-hidden ${currentTheme.colors.border} hover:shadow-lg transition-shadow duration-200`}
                 >
                   <img
-                    src={product.image}
+                    src={product.image_url}
                     alt={product.name}
                     className="w-full h-48 object-cover"
                   />

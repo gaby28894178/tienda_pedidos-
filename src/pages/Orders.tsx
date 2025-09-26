@@ -61,13 +61,7 @@ export const Orders: React.FC = () => {
     try {
       const orderData = {
         customerData,
-        items: items.map(item => ({
-          productId: item.product.id,
-          productName: item.product.name,
-          quantity: item.quantity,
-          price: item.product.price,
-          total: item.product.price * item.quantity
-        })),
+        items: items, // Use items directly as they are already CartItem[]
         totalAmount: getTotalPrice()
       };
       
@@ -80,7 +74,13 @@ export const Orders: React.FC = () => {
         customerEmail: customerData.email,
         customerPhone: customerData.phone,
         customerAddress: `${customerData.address}, ${customerData.city} ${customerData.postalCode}`.trim(),
-        orderItems: orderData.items,
+        orderItems: orderData.items.map(item => ({
+          productId: item.product.id,
+          productName: item.product.name,
+          quantity: item.quantity,
+          price: item.product.price,
+          total: item.product.price * item.quantity
+        })),
         totalAmount: orderData.totalAmount,
         orderNumber,
         orderDate: new Date().toLocaleDateString('es-ES')
@@ -89,7 +89,13 @@ export const Orders: React.FC = () => {
       const whatsappData = {
         customerName: customerData.name,
         customerPhone: customerData.phone,
-        orderItems: orderData.items,
+        orderItems: orderData.items.map(item => ({
+          productId: item.product.id,
+          productName: item.product.name,
+          quantity: item.quantity,
+          price: item.product.price,
+          total: item.product.price * item.quantity
+        })),
         totalAmount: orderData.totalAmount,
         orderNumber
       };
@@ -246,9 +252,8 @@ export const Orders: React.FC = () => {
                   <div className="mt-4">
                     <button
                       onClick={() => {
-                        const businessInfo = WhatsAppService.getBusinessInfo();
                         const message = `Hola! Me interesa hacer una consulta sobre los productos en mi carrito. Total: $${getTotalPrice().toFixed(2)}`;
-                        const whatsappURL = `https://wa.me/${businessInfo.phoneNumber || '+1234567890'}?text=${encodeURIComponent(message)}`;
+                        const whatsappURL = `https://wa.me/+1234567890?text=${encodeURIComponent(message)}`;
                         window.open(whatsappURL, '_blank');
                       }}
                       className={`

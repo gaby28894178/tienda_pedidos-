@@ -17,6 +17,9 @@ interface ProductState {
   error: string | null;
   
   loadProducts: () => Promise<void>;
+  addProduct: (product: Omit<Product, 'id'>) => void;
+  updateProduct: (id: string, product: Partial<Product>) => void;
+  removeProduct: (id: string) => void;
   setSelectedCategory: (categoryId: string | null) => void;
   setSearchTerm: (term: string) => void;
   filterProducts: () => void;
@@ -88,6 +91,33 @@ export const useProductStore = create<ProductState>((set, get) => ({
     set({ filteredProducts: filtered });
   },
   
+  addProduct: (productData) => {
+    const newProduct: Product = {
+      ...productData,
+      id: Date.now().toString(),
+    };
+    set(state => ({
+      products: [...state.products, newProduct],
+    }));
+    get().filterProducts();
+  },
+
+  updateProduct: (id, productData) => {
+    set(state => ({
+      products: state.products.map(product =>
+        product.id === id ? { ...product, ...productData } : product
+      ),
+    }));
+    get().filterProducts();
+  },
+
+  removeProduct: (id) => {
+    set(state => ({
+      products: state.products.filter(product => product.id !== id),
+    }));
+    get().filterProducts();
+  },
+
   getProductById: (id) => {
     return get().products.find(product => product.id === id);
   },

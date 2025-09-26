@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Key, ArrowLeft, Send, CheckCircle } from 'lucide-react';
 import { toast } from 'sonner';
 import { useAuthStore } from '../../stores/authStore';
-import { useThemeStore } from '../../stores/themeStore';
+import { useThemeStore, themes } from '../../stores/themeStore';
 
 interface PasswordRecoveryProps {
   onBack: () => void;
@@ -10,7 +10,8 @@ interface PasswordRecoveryProps {
 
 const PasswordRecovery: React.FC<PasswordRecoveryProps> = ({ onBack }) => {
   const { requestPasswordReset, resetPassword } = useAuthStore();
-  const { currentTheme } = useThemeStore();
+  const { theme } = useThemeStore();
+  const currentTheme = themes[theme];
   
   const [step, setStep] = useState<'request' | 'reset'>('request');
   const [isLoading, setIsLoading] = useState(false);
