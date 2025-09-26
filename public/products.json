@@ -1,0 +1,125 @@
+{
+  "products": [
+    {
+      "id": "zap_001",
+      "name": "Zapatillas Deportivas Nike Air",
+      "description": "Zapatillas cómodas para correr y entrenar con tecnología Air",
+      "price": 89.99,
+      "category": "zapatillas",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20white%20nike%20running%20shoes%20on%20clean%20background&image_size=square",
+      "available": true
+    },
+    {
+      "id": "zap_002",
+      "name": "Zapatillas Casual Adidas",
+      "description": "Zapatillas urbanas perfectas para el día a día",
+      "price": 75.50,
+      "category": "zapatillas",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=black%20adidas%20casual%20sneakers%20modern%20style&image_size=square",
+      "available": true
+    },
+    {
+      "id": "zap_003",
+      "name": "Zapatillas de Básquet Jordan",
+      "description": "Zapatillas de alto rendimiento para básquetbol",
+      "price": 129.99,
+      "category": "zapatillas",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=red%20and%20black%20jordan%20basketball%20shoes%20high%20top&image_size=square",
+      "available": true
+    },
+    {
+      "id": "ropa_001",
+      "name": "Camiseta Casual Básica",
+      "description": "Camiseta de algodón 100% para uso diario",
+      "price": 25.99,
+      "category": "ropa",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=plain%20white%20cotton%20t-shirt%20on%20hanger&image_size=square",
+      "available": true
+    },
+    {
+      "id": "ropa_002",
+      "name": "Jeans Clásicos",
+      "description": "Pantalones jeans de corte clásico y cómodo",
+      "price": 45.00,
+      "category": "ropa",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=blue%20denim%20jeans%20classic%20fit%20folded&image_size=square",
+      "available": true
+    },
+    {
+      "id": "ropa_003",
+      "name": "Sudadera con Capucha",
+      "description": "Sudadera cómoda perfecta para el clima frío",
+      "price": 39.99,
+      "category": "ropa",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=gray%20hoodie%20sweatshirt%20comfortable%20casual&image_size=square",
+      "available": true
+    },
+    {
+      "id": "bolso_001",
+      "name": "Bolso de Cuero Elegante",
+      "description": "Bolso elegante de cuero genuino para ocasiones especiales",
+      "price": 129.99,
+      "category": "bolsos",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=elegant%20brown%20leather%20handbag%20luxury%20style&image_size=square",
+      "available": true
+    },
+    {
+      "id": "bolso_002",
+      "name": "Mochila Deportiva",
+      "description": "Mochila resistente ideal para deportes y viajes",
+      "price": 55.00,
+      "category": "bolsos",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=black%20sports%20backpack%20durable%20modern&image_size=square",
+      "available": true
+    },
+    {
+      "id": "bolso_003",
+      "name": "Bolso Bandolera",
+      "description": "Bolso cruzado perfecto para llevar lo esencial",
+      "price": 35.50,
+      "category": "bolsos",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=small%20crossbody%20bag%20minimalist%20design&image_size=square",
+      "available": true
+    },
+    {
+      "id": "otros_001",
+      "name": "Reloj Deportivo",
+      "description": "Reloj resistente al agua con múltiples funciones",
+      "price": 89.00,
+      "category": "otros",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=black%20digital%20sports%20watch%20waterproof&image_size=square",
+      "available": true
+    },
+    {
+      "id": "otros_002",
+      "name": "Gafas de Sol",
+      "description": "Gafas de sol con protección UV y diseño moderno",
+      "price": 65.99,
+      "category": "otros",
+      "image_url": "https://trae-api-us.mchost.guru/api/ide/v1/text_to_image?prompt=modern%20black%20sunglasses%20UV%20protection&image_size=square",
+      "available": true
+    }
+  ],
+  "categories": [
+    {
+      "id": "zapatillas",
+      "name": "Zapatillas",
+      "description": "Calzado deportivo y casual para todas las ocasiones"
+    },
+    {
+      "id": "ropa",
+      "name": "Ropa",
+      "description": "Vestimenta cómoda y moderna para el día a día"
+    },
+    {
+      "id": "bolsos",
+      "name": "Bolsos",
+      "description": "Accesorios prácticos y elegantes para llevar tus pertenencias"
+    },
+    {
+      "id": "otros",
+      "name": "Otros",
+      "description": "Accesorios y productos diversos para complementar tu estilo"
+    }
+  ]
+}

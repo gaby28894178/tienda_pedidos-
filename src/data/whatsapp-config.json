@@ -1,0 +1,71 @@
+{
+  "whatsapp": {
+    "phoneNumber": "+1234567890",
+    "messages": {
+      "orderConfirmation": "¡Hola! Tu pedido ha sido confirmado. Detalles:\n\n{orderDetails}\n\nTotal: ${totalAmount}\n\n¡Gracias por tu compra!",
+      "orderReceived": "¡Gracias por tu pedido! Hemos recibido tu solicitud y te contactaremos pronto para confirmar los detalles.",
+      "orderProcessing": "Tu pedido está siendo procesado. Te notificaremos cuando esté listo para envío.",
+      "orderShipped": "¡Tu pedido ha sido enviado! Número de seguimiento: {trackingNumber}",
+      "orderDelivered": "¡Tu pedido ha sido entregado! Esperamos que disfrutes tus productos."
+    },
+    "businessInfo": {
+      "name": "Tienda Online",
+      "address": "Calle Principal 123, Ciudad",
+      "hours": "Lunes a Viernes: 9:00 AM - 6:00 PM"
+    }
+  },
+  "email": {
+    "orderRecipient": "pedidos@tiendaonline.com",
+    "supportEmail": "soporte@tiendaonline.com",
+    "templates": {
+      "orderNotification": {
+        "subject": "Nuevo Pedido Recibido - #{orderNumber}",
+        "body": "Se ha recibido un nuevo pedido:\n\nCliente: {customerName}\nEmail: {customerEmail}\nTeléfono: {customerPhone}\nDirección: {customerAddress}\n\nProductos:\n{orderItems}\n\nTotal: ${totalAmount}\n\nFecha: {orderDate}"
+      },
+      "customerConfirmation": {
+        "subject": "Confirmación de Pedido - #{orderNumber}",
+        "body": "Estimado/a {customerName},\n\nGracias por tu pedido. Hemos recibido tu solicitud y la estamos procesando.\n\nDetalles del pedido:\n{orderItems}\n\nTotal: ${totalAmount}\n\nNos pondremos en contacto contigo pronto.\n\nSaludos,\nEquipo de Tienda Online"
+      }
+    }
+  },
+  "sampleData": {
+    "chatMessages": [
+      {
+        "id": 1,
+        "sender": "customer",
+        "message": "Hola, me interesa el producto que vi en su catálogo",
+        "timestamp": "2024-01-15T10:30:00Z"
+      },
+      {
+        "id": 2,
+        "sender": "business",
+        "message": "¡Hola! Claro, estaremos encantados de ayudarte. ¿Qué producto te interesa?",
+        "timestamp": "2024-01-15T10:32:00Z"
+      },
+      {
+        "id": 3,
+        "sender": "customer",
+        "message": "Los zapatos deportivos que están en oferta",
+        "timestamp": "2024-01-15T10:35:00Z"
+      },
+      {
+        "id": 4,
+        "sender": "business",
+        "message": "Perfecto! Tenemos varios modelos disponibles. ¿Qué talla necesitas?",
+        "timestamp": "2024-01-15T10:36:00Z"
+      },
+      {
+        "id": 5,
+        "sender": "customer",
+        "message": "Talla 42, ¿tienen en stock?",
+        "timestamp": "2024-01-15T10:38:00Z"
+      },
+      {
+        "id": 6,
+        "sender": "business",
+        "message": "Sí, tenemos disponible en talla 42. El precio es $89.99. ¿Te gustaría hacer el pedido?",
+        "timestamp": "2024-01-15T10:40:00Z"
+      }
+    ]
+  }
+}

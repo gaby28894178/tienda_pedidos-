@@ -1,0 +1,57 @@
+# Development files
+.env.local
+.env.development.local
+.env.test.local
+
+# Documentation
+README.md
+*.md
+
+# Development dependencies
+node_modules/
+
+# Source maps
+*.map
+
+# Test files
+__tests__/
+*.test.*
+*.spec.*
+test/
+tests/
+
+# Development configuration
+.eslintrc.*
+.prettierrc.*
+vite.config.ts
+tsconfig.json
+tsconfig.*.json
+
+# IDE files
+.vscode/
+.idea/
+
+# Git files
+.git/
+.gitignore
+
+# Logs
+logs/
+*.log
+
+# Temporary files
+tmp/
+temp/
+
+# Coverage reports
+coverage/
+
+# Build artifacts that shouldn't be deployed
+src/
+public/mockServiceWorker.js
+
+# Supabase development files
+supabase/
+
+# Documentation directory
+.trae/
