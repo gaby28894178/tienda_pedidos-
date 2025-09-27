@@ -60,15 +60,15 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ className = '' }) 
         </div>
       </button>
 
-      {/* Overlay with Maximum Distortion Effect */}
+      {/* Overlay with Lighter Effect */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black z-40 md:hidden animate-fadeIn"
           onClick={closeMenu}
           style={{
-            backdropFilter: 'blur(40px) saturate(300%) contrast(150%) brightness(60%)',
-            WebkitBackdropFilter: 'blur(40px) saturate(300%) contrast(150%) brightness(60%)',
-            background: 'radial-gradient(circle at center, rgba(0,0,0,0.99) 0%, rgba(0,0,0,1) 100%)'
+            backdropFilter: 'blur(20px) saturate(150%) contrast(120%) brightness(80%)',
+            WebkitBackdropFilter: 'blur(20px) saturate(150%) contrast(120%) brightness(80%)',
+            background: 'radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.6) 100%)'
           }}
         />
       )}
@@ -76,34 +76,39 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ className = '' }) 
       {/* Mobile Menu with Completely Solid Background */}
       <div
         className={`
-          fixed top-0 left-0 h-full w-full z-50 transform transition-transform duration-300 ease-in-out
+          fixed top-0 h-full w-full z-50 transform transition-transform duration-300 ease-in-out
           ${currentTheme.colors.text}
           shadow-2xl
           md:hidden
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
         style={{
-          backgroundColor: theme === 'dark' ? '#0f172a' : theme === 'blue' ? '#1e3a8a' : '#ffffff',
-          boxShadow: '0 0 32px rgba(0, 0, 0, 0.6)',
-          opacity: '1'
+          left: '0px',
+          margin: '0px',
+          padding: '0px',
+          backgroundColor: theme === 'dark' ? '#374151' : theme === 'blue' ? '#3b82f6' : '#6b7280',
+          boxShadow: '0 0 20px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 0.2)',
+          opacity: '1',
+          border: '2px solid ' + (theme === 'dark' ? '#60a5fa' : theme === 'blue' ? '#93c5fd' : '#60a5fa')
         }}
       >
         <div className="flex flex-col h-full">
           {/* Header */}
           <div className="flex items-center justify-between p-6 border-b-4 border-gray-300 dark:border-gray-600"
                style={{ 
-                 borderBottomColor: theme === 'blue' ? '#2563eb' : theme === 'dark' ? '#1e293b' : '#9ca3af',
-                 backgroundColor: theme === 'dark' ? '#0f172a' : theme === 'blue' ? '#1e3a8a' : '#ffffff'
+                 borderBottomColor: theme === 'blue' ? '#93c5fd' : theme === 'dark' ? '#60a5fa' : '#60a5fa',
+                 backgroundColor: theme === 'dark' ? '#4b5563' : theme === 'blue' ? '#3b82f6' : '#9ca3af',
+                 background: 'linear-gradient(135deg, ' + (theme === 'dark' ? '#4b5563, #374151' : theme === 'blue' ? '#3b82f6, #2563eb' : '#9ca3af, #6b7280') + ')'
                }}>
             <h2 className="text-2xl font-bold text-gray-900 dark:text-white drop-shadow-lg"
-                style={{ color: theme === 'blue' ? '#ffffff' : theme === 'dark' ? '#ffffff' : '#111827' }}>Menú</h2>
+                style={{ color: '#ffffff' }}>Menú</h2>
             <button
               onClick={closeMenu}
               className="p-3 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-900 dark:text-white border-2 border-gray-300 dark:border-gray-600"
               style={{ 
-                backgroundColor: theme === 'blue' ? '#2563eb' : theme === 'dark' ? '#1e293b' : '#f3f4f6',
-                color: theme === 'blue' ? '#ffffff' : theme === 'dark' ? '#ffffff' : '#111827',
-                borderColor: theme === 'blue' ? '#3b82f6' : theme === 'dark' ? '#374151' : '#d1d5db'
+                backgroundColor: theme === 'blue' ? '#60a5fa' : theme === 'dark' ? '#6b7280' : '#e5e7eb',
+                color: '#ffffff',
+                borderColor: theme === 'blue' ? '#93c5fd' : theme === 'dark' ? '#9ca3af' : '#d1d5db'
               }}
             >
               <X size={20} />
@@ -113,13 +118,16 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ className = '' }) 
           {/* Navigation Items */}
           <nav className="flex-1 py-6"
                style={{
-                 backgroundColor: theme === 'dark' ? '#0f172a' : theme === 'blue' ? '#1e3a8a' : '#ffffff',
+                 backgroundColor: theme === 'dark' ? '#374151' : theme === 'blue' ? '#3b82f6' : '#6b7280',
+                 background: 'linear-gradient(180deg, ' + (theme === 'dark' ? '#374151, #4b5563' : theme === 'blue' ? '#3b82f6, #2563eb' : '#6b7280, #9ca3af') + ')',
                  opacity: '1'
                }}>
             <ul className="space-y-2 px-4"
                 style={{
-                  backgroundColor: theme === 'dark' ? '#0f172a' : theme === 'blue' ? '#1e3a8a' : '#ffffff',
-                  opacity: '1'
+                  backgroundColor: theme === 'dark' ? '#4b5563' : theme === 'blue' ? '#60a5fa' : '#f3f4f6',
+                  opacity: '1',
+                  borderRadius: '8px',
+                  padding: '12px'
                 }}>
               {menuItems.map((item) => {
                 const isActive = location.pathname === item.path;
@@ -137,10 +145,11 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ className = '' }) 
                       `}
                       style={{
                         backgroundColor: isActive 
-                          ? (theme === 'blue' ? '#2563eb' : '#3b82f6') 
-                          : (theme === 'dark' ? '#1e293b' : theme === 'blue' ? '#1e40af' : '#f9fafb'),
-                        color: isActive ? '#ffffff' : (theme === 'blue' ? '#ffffff' : theme === 'dark' ? '#ffffff' : '#111827'),
-                        opacity: '1'
+                          ? (theme === 'blue' ? '#1d4ed8' : '#2563eb') 
+                          : (theme === 'dark' ? '#6b7280' : theme === 'blue' ? '#93c5fd' : '#ffffff'),
+                        color: isActive ? '#ffffff' : (theme === 'blue' ? '#1e40af' : theme === 'dark' ? '#1f2937' : '#374151'),
+                        opacity: '1',
+                        border: '1px solid ' + (isActive ? 'transparent' : (theme === 'dark' ? '#9ca3af' : theme === 'blue' ? '#60a5fa' : '#d1d5db'))
                       }}
                     >
                       <span className="flex-shrink-0">{item.icon}</span>
@@ -160,12 +169,13 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ className = '' }) 
           {/* Theme Toggle */}
           <div className="p-6 border-t-4 border-gray-300 dark:border-gray-600"
                style={{ 
-                 borderTopColor: theme === 'blue' ? '#2563eb' : theme === 'dark' ? '#1e293b' : '#9ca3af',
-                 backgroundColor: theme === 'dark' ? '#0f172a' : theme === 'blue' ? '#1e3a8a' : '#ffffff'
+                 borderTopColor: theme === 'blue' ? '#93c5fd' : theme === 'dark' ? '#60a5fa' : '#60a5fa',
+                 backgroundColor: theme === 'dark' ? '#4b5563' : theme === 'blue' ? '#3b82f6' : '#9ca3af',
+                 background: 'linear-gradient(135deg, ' + (theme === 'dark' ? '#4b5563, #374151' : theme === 'blue' ? '#3b82f6, #2563eb' : '#9ca3af, #6b7280') + ')'
                }}>
             <div className="flex items-center justify-between">
               <span className="text-lg font-bold text-gray-600 dark:text-gray-300 drop-shadow-lg"
-                    style={{ color: theme === 'blue' ? '#ffffff' : theme === 'dark' ? '#ffffff' : '#111827' }}>
+                    style={{ color: '#ffffff' }}>
                 Tema
               </span>
               <ThemeToggle />
