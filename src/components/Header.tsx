@@ -13,32 +13,38 @@ export const Header: React.FC<HeaderProps> = ({ className = '' }) => {
   const currentTheme = themes[theme];
 
   return (
-    <header
-      className={`
-        sticky top-0 z-40 w-full border-b backdrop-blur-sm
-        ${currentTheme.colors.background} ${currentTheme.colors.border}
-        bg-opacity-95 ${className}
-      `}
-    >
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          {/* Logo */}
-          <Link
-            to="/"
-            className={`
-              flex items-center space-x-2 font-bold text-xl transition-colors duration-200
-              ${currentTheme.colors.text} hover:${currentTheme.colors.primary.replace('bg-', 'text-')}
-            `}
-          >
-            <Store size={28} className={currentTheme.colors.primary.replace('bg-', 'text-')} />
-            <span>TiendaOnline</span>
-          </Link>
+    <header className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300`}
+            style={{
+              background: theme === 'dark'
+                ? 'rgb(15, 23, 42)'
+                : theme === 'blue'
+                ? 'rgb(30, 58, 138)'
+                : 'rgb(248, 250, 252)',
+              backdropFilter: 'none',
+              WebkitBackdropFilter: 'none',
+              borderBottom: '1px solid',
+              borderBottomColor: theme === 'dark'
+                ? 'rgba(255, 255, 255, 0.1)'
+                : theme === 'blue'
+                ? 'rgba(255, 255, 255, 0.2)'
+                : 'rgba(148, 163, 184, 0.2)',
+              boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)'
+            }}>
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link
+          to="/"
+          className="flex items-center space-x-2 transition-opacity hover:opacity-80"
+          style={{
+            color: theme === 'dark' ? '#ffffff' : theme === 'blue' ? '#ffffff' : '#1f2937'
+          }}
+        >
+          <Store className="h-8 w-8" />
+          <span className="text-xl font-bold">TechStore</span>
+        </Link>
 
-          {/* Navigation */}
-          <div className="flex items-center space-x-4">
-            <HamburgerMenu />
-          </div>
-        </div>
+        {/* Hamburger Menu Component */}
+        <HamburgerMenu />
       </div>
     </header>
   );
