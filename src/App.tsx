@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'sonner';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { ThemeProvider } from './components/ThemeProvider';
 import { Header } from './components/Header';
 import { Home } from './pages/Home';
@@ -45,6 +47,18 @@ function App() {
               },
               className: 'toast-custom',
             }}
+          />
+          <ToastContainer
+            position="top-right"
+            autoClose={4000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme={theme === 'dark' ? 'dark' : 'light'}
           />
         </div>
       </Router>

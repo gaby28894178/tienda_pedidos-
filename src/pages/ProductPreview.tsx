@@ -5,6 +5,7 @@ import { useThemeStore, themes } from '../stores/themeStore';
 import { useProductStore } from '../stores/productStore';
 import { useCartStore } from '../stores/cartStore';
 import { toast } from 'sonner';
+import { toast as toastify } from 'react-toastify';
 
 export const ProductPreview: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -224,6 +225,7 @@ export const ProductPreview: React.FC = () => {
               </button>
 
               <button
+                onClick={() => toastify.info('función no está activa en este momento')}
                 className={`
                   w-full flex items-center justify-center space-x-3 px-6 py-3 rounded-lg
                   font-medium transition-all duration-200 border-2

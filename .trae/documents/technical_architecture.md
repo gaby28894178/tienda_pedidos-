@@ -185,6 +185,68 @@ Los datos de productos se almacenan en el archivo estático `public/products.jso
 }
 ```
 
+## 8. Sistema de Notificaciones con React-Toastify
+
+### 8.1 Implementación de Notificaciones
+
+El proyecto utiliza **React-Toastify** para mostrar notificaciones elegantes y no intrusivas al usuario. Esta librería reemplaza los alerts nativos del navegador proporcionando una mejor experiencia de usuario.
+
+### 8.2 Configuración Global
+
+**Archivo: `src/App.tsx`**
+```tsx
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// Configuración del ToastContainer
+<ToastContainer
+  position="top-right"
+  autoClose={3000}
+  hideProgressBar={false}
+  newestOnTop={false}
+  closeOnClick
+  rtl={false}
+  pauseOnFocusLoss
+  draggable
+  pauseOnHover
+/>
+```
+
+### 8.3 Uso en Componentes
+
+**Importación:**
+```tsx
+import { toast } from 'react-toastify';
+```
+
+**Tipos de notificaciones disponibles:**
+- `toast.success()` - Notificaciones de éxito (verde)
+- `toast.error()` - Notificaciones de error (rojo)
+- `toast.info()` - Notificaciones informativas (azul)
+- `toast.warning()` - Notificaciones de advertencia (amarillo)
+
+### 8.4 Implementación en Botón de Favoritos
+
+**Archivo: `src/pages/ProductPreview.tsx`**
+```tsx
+const handleAddToFavorites = () => {
+  toast.info('función no está activa en este momento');
+};
+
+<button onClick={handleAddToFavorites}>
+  <Heart size={20} />
+  <span>Agregar a Favoritos</span>
+</button>
+```
+
+### 8.5 Beneficios de la Implementación
+
+- **Experiencia de Usuario Mejorada**: Notificaciones no bloqueantes
+- **Consistencia Visual**: Diseño uniforme en toda la aplicación
+- **Personalización**: Fácil configuración de posición, duración y estilos
+- **Accesibilidad**: Soporte para lectores de pantalla
+- **Animaciones Suaves**: Transiciones elegantes de entrada y salida
+
 ## 9. Estructura de Archivos del Proyecto
 
 ### 9.1 Organización General
