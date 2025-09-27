@@ -11,7 +11,7 @@
   "values": [
     {
       "key": "base_url",
-      "value": "http://localhost:5173",
+      "value": "https://muestras-productos-app.netlify.app",
       "enabled": true,
       "type": "default"
     },

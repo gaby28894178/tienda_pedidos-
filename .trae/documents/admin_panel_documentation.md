@@ -361,7 +361,7 @@ Authorization: Bearer {token}
   "values": [
     {
       "key": "base_url",
-      "value": "http://localhost:5173/api",
+      "value": "https://muestras-productos-app.netlify.app/api",
       "enabled": true
     },
     {
