@@ -20,43 +20,53 @@ graph TD
 ```
 
 ## 2. Descripción de Tecnologías
-- Frontend: React@18 + tailwindcss@3 + vite
-- Backend: Supabase
-- Gestión de Estado: React Context API
-- Almacenamiento Local: JSON files + localStorage
+
+* Frontend: React\@18 + tailwindcss\@3 + vite
+
+* Backend: Supabase
+
+* Gestión de Estado: React Context API
+
+* Almacenamiento Local: JSON files + localStorage
 
 ## 3. Definiciones de Rutas
-| Ruta | Propósito |
-|------|----------|
-| / | Página de inicio, muestra productos destacados y selector de tema |
-| /catalog | Catálogo completo de productos con filtros por categoría |
-| /orders | Lista de pedidos actual del usuario con formulario de datos |
-| /admin | Panel de administración para gestión de productos (opcional) |
+
+| Ruta     | Propósito                                                         |
+| -------- | ----------------------------------------------------------------- |
+| /        | Página de inicio, muestra productos destacados y selector de tema |
+| /catalog | Catálogo completo de productos con filtros por categoría          |
+| /orders  | Lista de pedidos actual del usuario con formulario de datos       |
+| /admin   | Panel de administración para gestión de productos (opcional)      |
 
 ## 4. Definiciones de API
+
 ### 4.1 API Principal
 
 Gestión de pedidos
+
 ```
 POST /api/orders
 ```
 
 Request:
-| Nombre del Parámetro | Tipo del Parámetro | Es Requerido | Descripción |
-|---------------------|-------------------|--------------|-------------|
-| customerEmail | string | true | Correo electrónico del cliente |
-| customerPhone | string | true | Teléfono del cliente |
-| customerAddress | string | true | Dirección del cliente |
-| items | array | true | Lista de productos en el pedido |
-| totalAmount | number | true | Monto total del pedido |
+
+| Nombre del Parámetro | Tipo del Parámetro | Es Requerido | Descripción                     |
+| -------------------- | ------------------ | ------------ | ------------------------------- |
+| customerEmail        | string             | true         | Correo electrónico del cliente  |
+| customerPhone        | string             | true         | Teléfono del cliente            |
+| customerAddress      | string             | true         | Dirección del cliente           |
+| items                | array              | true         | Lista de productos en el pedido |
+| totalAmount          | number             | true         | Monto total del pedido          |
 
 Response:
-| Nombre del Parámetro | Tipo del Parámetro | Descripción |
-|---------------------|-------------------|-------------|
-| success | boolean | Estado de la respuesta |
-| orderId | string | ID único del pedido creado |
+
+| Nombre del Parámetro | Tipo del Parámetro | Descripción                |
+| -------------------- | ------------------ | -------------------------- |
+| success              | boolean            | Estado de la respuesta     |
+| orderId              | string             | ID único del pedido creado |
 
 Ejemplo:
+
 ```json
 {
   "customerEmail": "cliente@email.com",
@@ -76,16 +86,19 @@ Ejemplo:
 ```
 
 Gestión de productos
+
 ```
 GET /api/products
 ```
 
 Response:
-| Nombre del Parámetro | Tipo del Parámetro | Descripción |
-|---------------------|-------------------|-------------|
-| products | array | Lista de todos los productos disponibles |
+
+| Nombre del Parámetro | Tipo del Parámetro | Descripción                              |
+| -------------------- | ------------------ | ---------------------------------------- |
+| products             | array              | Lista de todos los productos disponibles |
 
 ## 5. Diagrama de Arquitectura del Servidor
+
 ```mermaid
 graph TD
   A[Cliente / Frontend] --> B[Capa de Controladores]
@@ -105,6 +118,7 @@ graph TD
 ## 6. Modelo de Datos
 
 ### 6.1 Definición del Modelo de Datos
+
 ```mermaid
 erDiagram
     PRODUCT {
@@ -142,10 +156,13 @@ erDiagram
 ### 7.1 Netlify Deployment
 
 #### URLs de Producción
-- **Aplicación Principal**: https://muestras-productos-app.netlify.app
-- **Panel de Administración**: https://muestras-productos-app.netlify.app/pm
+
+* **Aplicación Principal**: <https://muestras-productos-app.netlify.app>
+
+* **Panel de Administración**: <https://muestras-productos-app.netlify.app/pm>
 
 #### Configuración de Build
+
 ```json
 {
   "build": {
@@ -155,12 +172,14 @@ erDiagram
 }
 ```
 
-#### Configuración SPA (_redirects)
+#### Configuración SPA (\_redirects)
+
 ```
 /* /index.html 200
 ```
 
 ### 7.2 Estructura de Archivos de Despliegue
+
 ```
 dist/
 ├── index.html
@@ -171,21 +190,28 @@ dist/
 ```
 
 ### 7.3 Variables de Entorno
+
 ```
 VITE_APP_TITLE=Muestras de Productos
 VITE_API_URL=https://muestras-productos-app.netlify.app
 ```
 
 ### 7.4 Estado del Despliegue
-- ✅ **Build exitoso** con Vite
-- ✅ **SPA routing** configurado
-- ✅ **Assets optimizados** y comprimidos
-- ✅ **Responsive design** verificado
-- ✅ **Performance** optimizado
+
+* ✅ **Build exitoso** con Vite
+
+* ✅ **SPA routing** configurado
+
+* ✅ **Assets optimizados** y comprimidos
+
+* ✅ **Responsive design** verificado
+
+* ✅ **Performance** optimizado
 
 ### 6.2 Lenguaje de Definición de Datos
 
 Tabla de Clientes (customers)
+
 ```sql
 -- crear tabla
 CREATE TABLE customers (
@@ -206,6 +232,7 @@ GRANT ALL PRIVILEGES ON customers TO authenticated;
 ```
 
 Tabla de Pedidos (orders)
+
 ```sql
 -- crear tabla
 CREATE TABLE orders (
@@ -226,7 +253,8 @@ GRANT SELECT ON orders TO anon;
 GRANT ALL PRIVILEGES ON orders TO authenticated;
 ```
 
-Tabla de Elementos de Pedido (order_items)
+Tabla de Elementos de Pedido (order\_items)
+
 ```sql
 -- crear tabla
 CREATE TABLE order_items (
@@ -247,6 +275,7 @@ GRANT ALL PRIVILEGES ON order_items TO authenticated;
 ```
 
 Archivo JSON de Productos (products.json)
+
 ```json
 {
   "products": [
@@ -302,3 +331,4 @@ Archivo JSON de Productos (products.json)
   ]
 }
 ```
+

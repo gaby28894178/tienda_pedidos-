@@ -76,16 +76,15 @@ export const HamburgerMenu: React.FC<HamburgerMenuProps> = ({ className = '' }) 
       {/* Mobile Menu with Completely Solid Background */}
       <div
         className={`
-          fixed top-0 left-0 h-full w-80 z-50 transform transition-transform duration-300 ease-in-out
+          fixed top-0 left-0 h-full w-full z-50 transform transition-transform duration-300 ease-in-out
           ${currentTheme.colors.text}
-          shadow-2xl border-r-8 border-gray-200 dark:border-gray-700
+          shadow-2xl
           md:hidden
           ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
         style={{
           backgroundColor: theme === 'dark' ? '#0f172a' : theme === 'blue' ? '#1e3a8a' : '#ffffff',
-          borderRightColor: theme === 'dark' ? '#1e293b' : theme === 'blue' ? '#2563eb' : '#d1d5db',
-          boxShadow: '8px 0 32px rgba(0, 0, 0, 0.6), inset -2px 0 0 rgba(255, 255, 255, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 0 32px rgba(0, 0, 0, 0.6)',
           opacity: '1'
         }}
       >
