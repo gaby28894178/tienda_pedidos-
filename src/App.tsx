@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { Home } from './pages/Home';
 import { Catalog } from './pages/Catalog';
 import { Orders } from './pages/Orders';
+import { ProductPreview } from './pages/ProductPreview';
 import { AdminPanel } from './components/admin/AdminPanel';
 import { useThemeStore, themes } from './stores/themeStore';
 
@@ -22,6 +23,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/catalog" element={<Catalog />} />
+              <Route path="/product/:id" element={<ProductPreview />} />
               <Route path="/orders" element={<Orders />} />
               <Route path="/pm" element={<AdminPanel />} />
             </Routes>

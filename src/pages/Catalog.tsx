@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Search, Filter, ShoppingCart, Plus, Minus } from 'lucide-react';
+import { Search, Filter, ShoppingCart, Plus, Minus, Eye } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useThemeStore, themes } from '../stores/themeStore';
 import { useProductStore } from '../stores/productStore';
 import { useCartStore } from '../stores/cartStore';
 
 export const Catalog: React.FC = () => {
+  const navigate = useNavigate();
   const { theme } = useThemeStore();
   const {
     filteredProducts,
@@ -32,6 +34,10 @@ export const Catalog: React.FC = () => {
 
   const handleAddToCart = (product: any) => {
     addToCart(product);
+  };
+
+  const handleViewProduct = (productId: string) => {
+    navigate(`/product/${productId}`);
   };
 
   if (loading) {
@@ -146,16 +152,27 @@ export const Catalog: React.FC = () => {
                 `}
                 style={{ animationDelay: `${index * 0.05}s` }}
               >
-                <div className="relative">
+                <div className="relative group">
                   <img
                     src={product.image_url}
                     alt={product.name}
-                    className="w-full h-48 object-cover"
+                    className="w-full h-48 object-cover cursor-pointer transition-transform duration-200 group-hover:scale-105"
+                    onClick={() => handleViewProduct(product.id)}
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.src = `https://via.placeholder.com/300x200/e5e7eb/6b7280?text=${encodeURIComponent(product.name)}`;
                     }}
                   />
+                  {/* Overlay con botón de vista previa */}
+                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-200 flex items-center justify-center">
+                    <button
+                      onClick={() => handleViewProduct(product.id)}
+                      className="opacity-0 group-hover:opacity-100 bg-white text-gray-800 px-4 py-2 rounded-lg font-medium transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 flex items-center space-x-2 hover:bg-gray-100"
+                    >
+                      <Eye size={16} />
+                      <span>Ver Detalles</span>
+                    </button>
+                  </div>
                   {cartQuantity > 0 && (
                     <div className="absolute top-2 right-2 bg-red-500 text-white text-xs rounded-full px-2 py-1 animate-bounce-custom">
                       {cartQuantity}
@@ -163,7 +180,10 @@ export const Catalog: React.FC = () => {
                   )}
                 </div>
                 <div className="p-4">
-                  <h3 className={`text-lg font-semibold mb-2 ${currentTheme.colors.text}`}>
+                  <h3 
+                    className={`text-lg font-semibold mb-2 ${currentTheme.colors.text} cursor-pointer hover:${currentTheme.colors.primary.replace('bg-', 'text-')} transition-colors duration-200`}
+                    onClick={() => handleViewProduct(product.id)}
+                  >
                     {product.name}
                   </h3>
                   <p className={`text-sm mb-3 ${currentTheme.colors.textSecondary} line-clamp-2`}>
@@ -177,18 +197,32 @@ export const Catalog: React.FC = () => {
                       {categories.find(c => c.id === product.category)?.name}
                     </span>
                   </div>
-                  <button
-                    onClick={() => handleAddToCart(product)}
-                    className={`
-                      w-full flex items-center justify-center space-x-2 px-4 py-2 rounded-lg
-                      font-medium transition-all duration-200
-                      ${currentTheme.colors.primary} text-white ${currentTheme.colors.primaryHover}
-                      hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500
-                    `}
-                  >
-                    <ShoppingCart size={16} />
-                    <span>Agregar al Carrito</span>
-                  </button>
+                  <div className="flex space-x-2">
+                    <button
+                      onClick={() => handleViewProduct(product.id)}
+                      className={`
+                        flex-1 flex items-center justify-center space-x-2 px-3 py-2 rounded-lg
+                        font-medium transition-all duration-200 border-2
+                        ${currentTheme.colors.border} ${currentTheme.colors.text}
+                        hover:${currentTheme.colors.accent}
+                      `}
+                    >
+                      <Eye size={14} />
+                      <span>Ver</span>
+                    </button>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className={`
+                        flex-1 flex items-center justify-center space-x-2 px-3 py-2 rounded-lg
+                        font-medium transition-all duration-200
+                        ${currentTheme.colors.primary} text-white ${currentTheme.colors.primaryHover}
+                        hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500
+                      `}
+                    >
+                      <ShoppingCart size={14} />
+                      <span>Carrito</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );
