@@ -107,41 +107,81 @@ graph TD
 ### 6.1 Definición del Modelo de Datos
 ```mermaid
 erDiagram
-  CUSTOMER ||--o{ ORDER : places
-  ORDER ||--|{ ORDER_ITEM : contains
-  PRODUCT ||--|{ ORDER_ITEM : includes
-
-  CUSTOMER {
-      uuid id PK
-      string email
-      string phone
-      string address
-      timestamp created_at
-  }
-  ORDER {
-      uuid id PK
-      uuid customer_id FK
-      decimal total_amount
-      string status
-      timestamp created_at
-  }
-  ORDER_ITEM {
-      uuid id PK
-      uuid order_id FK
-      string product_id
-      integer quantity
-      decimal unit_price
-  }
-  PRODUCT {
-      string id PK
-      string name
-      string description
-      decimal price
-      string category
-      string image_url
-      boolean available
-  }
+    PRODUCT {
+        string id PK
+        string name
+        string description
+        number price
+        string image
+        string category
+        boolean available
+    }
+    ORDER {
+        string id PK
+        string customerName
+        string customerEmail
+        string customerPhone
+        array items
+        number total
+        string status
+        date createdAt
+    }
+    ORDER_ITEM {
+        string productId FK
+        string productName
+        number quantity
+        number price
+    }
+    
+    ORDER ||--o{ ORDER_ITEM : contains
+    PRODUCT ||--o{ ORDER_ITEM : references
 ```
+
+## 7. Configuración de Despliegue
+
+### 7.1 Netlify Deployment
+
+#### URLs de Producción
+- **Aplicación Principal**: https://muestras-productos-app.netlify.app
+- **Panel de Administración**: https://muestras-productos-app.netlify.app/pm
+
+#### Configuración de Build
+```json
+{
+  "build": {
+    "command": "npm run build",
+    "publish": "dist"
+  }
+}
+```
+
+#### Configuración SPA (_redirects)
+```
+/* /index.html 200
+```
+
+### 7.2 Estructura de Archivos de Despliegue
+```
+dist/
+├── index.html
+├── assets/
+│   ├── index-[hash].js
+│   └── index-[hash].css
+└── _redirects
+```
+
+### 7.3 Variables de Entorno
+```
+VITE_APP_TITLE=Muestras de Productos
+VITE_API_URL=https://muestras-productos-app.netlify.app
+```
+
+### 7.4 Estado del Despliegue
+- ✅ **Build exitoso** con Vite
+- ✅ **SPA routing** configurado
+- ✅ **Assets optimizados** y comprimidos
+- ✅ **Responsive design** verificado
+- ✅ **Performance** optimizado
 
 ### 6.2 Lenguaje de Definición de Datos
 

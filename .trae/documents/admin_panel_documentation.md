@@ -15,18 +15,41 @@ Este documento describe el sistema de administración oculto para la gestión co
 
 ## 2. Acceso al Panel de Administración
 
-### 2.1 Ruta Oculta
+### 2.1 URLs de Acceso
+
+#### Producción (Netlify)
 ```
-URL: /admin-panel-secret-2024
-Acceso: Solo administradores autorizados
-Autenticación: Requerida
+URL Principal: https://muestras-productos-app.netlify.app/pm
+Acceso: Directo sin autenticación (para desarrollo)
+Estado: ✅ Funcionando correctamente
 ```
 
-### 2.2 Credenciales de Acceso
+#### Desarrollo Local
 ```
-Usuario: admin@tienda.com
-Contraseña: AdminSecret2024!
+URL Local: http://localhost:5173/pm
+Comando: npm run dev
+Puerto: 5173
 ```
+
+### 2.2 Configuración de Rutas
+
+#### Netlify SPA Configuration
+El archivo `_redirects` en `/public` contiene:
+```
+/* /index.html 200
+```
+
+Esto asegura que:
+- La ruta `/pm` funcione correctamente en producción
+- No se produzcan errores 404 al acceder directamente
+- El routing de React funcione sin problemas
+
+### 2.3 Estado del Despliegue
+- ✅ **Panel desplegado** en Netlify
+- ✅ **Ruta /pm accesible** desde cualquier dispositivo
+- ✅ **Gestión de pedidos** operativa
+- ✅ **Interfaz responsive** funcionando
+- ✅ **Cambio de temas** disponible
 
 ## 3. Gestión de Productos
 

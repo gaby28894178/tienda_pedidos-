@@ -71,3 +71,38 @@ graph TD
 
 ### 4.3 Responsividad
 El producto es mobile-first con adaptación a desktop. Incluye optimización para interacciones táctiles, menú hamburguesa para móvil y grid adaptativo para diferentes tamaños de pantalla.
+
+## 5. Enlaces de Despliegue y Acceso
+
+### 5.1 URLs de Producción
+- **Aplicación Principal**: https://muestras-productos-app.netlify.app
+- **Panel de Administración**: https://muestras-productos-app.netlify.app/pm
+- **Desarrollo Local**: http://localhost:5173/pm
+
+### 5.2 Configuración de Despliegue
+
+#### Netlify
+- **Plataforma**: Netlify
+- **URL de Producción**: https://muestras-productos-app.netlify.app
+- **Configuración SPA**: Archivo `_redirects` en `/public`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist`
+
+#### Configuración de Rutas SPA
+Para asegurar que todas las rutas funcionen correctamente como Single Page Application:
+
+```
+/* /index.html 200
+```
+
+Esta configuración en el archivo `_redirects` permite que:
+- La ruta `/pm` funcione correctamente
+- Todas las rutas de React Router funcionen sin errores 404
+- La aplicación mantenga el estado al recargar páginas
+
+### 5.3 Estado del Despliegue
+- ✅ **Aplicación desplegada** en Netlify
+- ✅ **Rutas SPA configuradas** correctamente
+- ✅ **Panel de administración accesible** en `/pm`
+- ✅ **Responsive design** funcionando
+- ✅ **Temas visuales** operativos
